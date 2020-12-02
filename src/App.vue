@@ -21,12 +21,24 @@
     },
 
     data(){
-      
+      return {
+        pokerApi: [],
+        txtPokemon: "",
+        baseUrl: "https://pokeapi.co/api/v2/"
+      }
     },
-     methods: {
-
-     }
-
+    
+    methods: {
+    getIndividualPokemon(){
+      fetch(`https://pokeapi.co/api/v2/pokemon/${this.pokerName}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        this.pokemons = [];
+        this.pokemons.push(data)
+        })
+      }
+    }
   }
 
 </script>
