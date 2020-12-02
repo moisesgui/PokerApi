@@ -83,11 +83,11 @@ export default {
   border: solid 1px #2c3e50;
   width: 120px;
   height: 24px;
-  background-image: linear-gradient(rgb(255, 174, 0), rgb(209, 173, 53));
+  background-color: rgb(255, 193, 23);
   color: black;
 }
 .btn:hover {
-  background-image: linear-gradient(rgb(252, 207, 110), rgb(255, 196, 0));
+  background-image: linear-gradient(rgb(255, 226, 164), rgb(255, 193, 23));
   color: black;
 }
 </style>
