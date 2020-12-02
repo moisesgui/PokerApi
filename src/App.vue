@@ -1,46 +1,54 @@
 <template>
+
   <div class="container">
-    <TitleElement msg="Get Pokemons API "/>
-    <input 
-      v-model="txtPokemon"
-      class="fieldTxt" 
-      type="text" 
-      placeholder="Poker Name"
-    >
-    <button class="btn" >Search</button>
+    <TitleElement msg="Get Pokemons API " />
+    <div class="content-select">
+      <select class="select-element" name="Select Search">
+        <option class="opSelect" value="Select">Select Search</option>
+        <option class="opName" value="Name">Name</option>
+        <option class="opId" value="Id">Id</option>
+        <option class="opAbility" value="Ability">Ability</option>
+      </select>
+      <button class="btn" @click="getPokerApi()">Search</button>
+    </div>
   </div>
+
 </template>
 
 <script>
-  import TitleElement from './components/TitleElement.vue'
+import TitleElement from "./components/TitleElement.vue";
 
-  export default {
-    name: 'App',
-    components: {
-      TitleElement
+export default {
+  name: "App",
+  components: {
+    TitleElement,
+  },
+
+  data() {
+    return {
+      pokerApi: [],
+      txtPokemon: "",
+      baseUrl: "https://pokeapi.co/api/v2/",
+    };
+  },
+
+  methods: {
+    getPokerApi() {
+      fetch(`${this.baseUrl}`)
+        .then((response) => response.json())
+        .then((respApi) => {
+          console.log(respApi);
+          this.pokerApi = [];
+          this.pokerApi.push(respApi);
+        });
     },
-
-    data(){
-      return {
-        pokerApi: [],
-        txtPokemon: "",
-        baseUrl: "https://pokeapi.co/api/v2/"
+    fieldValidade() {
+      if (this.txtPokemon) {
+        return console.log("hellow");
       }
     },
-    
-    methods: {
-    getIndividualPokemon(){
-      fetch(`https://pokeapi.co/api/v2/pokemon/${this.pokerName}`)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        this.pokemons = [];
-        this.pokemons.push(data)
-        })
-      }
-    }
-  }
-
+  },
+};
 </script>
 
 <style>
@@ -60,22 +68,25 @@
   height: 170px;
   box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 40px 0 rgba(0, 0, 0, 0.19);
 }
-.fieldTxt {
+.content-select {
+  margin: 20px 20px 10px;
+}
+.select-element {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   width: 200px;
-  height: 20px;
+  height: 22px;
   margin: 10px;
-  border: solid 1px #2c3e50;
 }
 .btn {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 13px;
   border: solid 1px #2c3e50;
   width: 120px;
-  height: 25px;
+  height: 23px;
   color: white;
   background-color: rgb(20, 130, 219);
 }
 .btn:hover {
-  background-color: rgb(46, 155, 243);
+  background-color: rgb(68, 163, 241);
 }
 </style>

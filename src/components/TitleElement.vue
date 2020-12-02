@@ -18,6 +18,6 @@ export default {
     margin: 0 auto;
   }
   .content {
-    padding-top: 20px;
+    padding: 16px 16px 0px;
   }
 </style>
