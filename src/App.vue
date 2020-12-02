@@ -9,7 +9,7 @@
         <option class="opId" value="Id">Id</option>
         <option class="opAbility" value="Ability">Ability</option>
       </select>
-      <button class="btn" @click="getPokerApi()">Search</button>
+      <button class="btn" @click="fieldValidade()">Search</button>
     </div>
   </div>
 
@@ -43,9 +43,7 @@ export default {
         });
     },
     fieldValidade() {
-      if (this.txtPokemon) {
-        return console.log("hellow");
-      }
+      console.log(this.selected)
     },
   },
 };
@@ -81,14 +79,15 @@ export default {
 .btn {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 14px;
   border: solid 1px #2c3e50;
   width: 120px;
-  height: 23px;
-  color: white;
-  background-color: rgb(20, 130, 219);
+  height: 24px;
+  background-image: linear-gradient(rgb(255, 174, 0), rgb(209, 173, 53));
+  color: black;
 }
 .btn:hover {
-  background-color: rgb(68, 163, 241);
+  background-image: linear-gradient(rgb(252, 207, 110), rgb(255, 196, 0));
+  color: black;
 }
 </style>
