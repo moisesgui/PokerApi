@@ -3,8 +3,8 @@
   <div class="container">
     <TitleElement msg="Get Pokemons API " />
     <div class="content-select">
-      <select class="select-element" name="Select Search">
-        <option class="opSelect" value="Select">Select Search</option>
+      <select v-model="selected" class="select-element" name="Select Search">
+        <option disabled value="">Select Item</option>
         <option class="opName" value="Name">Name</option>
         <option class="opId" value="Id">Id</option>
         <option class="opAbility" value="Ability">Ability</option>
@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       pokerApi: [],
-      txtPokemon: "",
+      selected: "",
       baseUrl: "https://pokeapi.co/api/v2/",
     };
   },
@@ -73,12 +73,14 @@ export default {
 }
 .select-element {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 14px;
   width: 200px;
   height: 22px;
   margin: 10px;
 }
 .btn {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-weight: bold;
   font-size: 13px;
   border: solid 1px #2c3e50;
   width: 120px;
