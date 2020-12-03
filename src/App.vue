@@ -8,7 +8,7 @@
         <option class="opId" value="Id">Id</option>
         <option class="opAbility" value="Ability">Ability</option>
       </select>
-      <button class="btn" @click="getPokerApi()">Search</button>
+      <button class="btn" @click="getPokerName()">Search</button>
       <ul>
         <li
           v-for="index in pokerApi"
@@ -35,19 +35,28 @@ export default {
     return {
       pokerApi: [],
       selected: "",
+      typedPoker: "",
       baseUrl: "https://pokeapi.co/api/v2/",
     };
   },
 
   methods: {
+  
     getPokerApi() {
       fetch(`${this.baseUrl}pokemon`)
-        .then((response) => response.json())
-        .then((respApi) => {
-          console.log(respApi);
-          this.pokerApi = [];
-          this.pokerApi.push(respApi.results);
-        });
+      .then((response) => response.json())
+      .then((respApi) => {
+        console.log(respApi);
+        this.pokerApi = [];
+        this.pokerApi.push(respApi.results)
+        console.log(this.selected)
+      });
+    },
+    getPokerName(){
+      if (this.selected === "Name") {
+       this.typedPoker = prompt('what poker name?')
+        console.log(this.typedPoker)
+      }
     },
   },
 };
@@ -81,9 +90,16 @@ ul, li {
 .select-element {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   font-size: 14px;
+  font-weight: bolder;
   width: 200px;
-  height: 22px;
+  height: 25px;
   margin: 10px;
+  background-color: #f1f1f1;
+  border: 1px solid #f1f1f1;
+  cursor: pointer;
+}
+.select-element:hover {
+  border: 1px solid rgb(255, 193, 23);
 }
 .btn {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -91,7 +107,7 @@ ul, li {
   font-size: 14px;
   border: solid 1px #2c3e50;
   width: 120px;
-  height: 24px;
+  height: 27px;
   background-color: rgb(255, 193, 23);
   color: black;
 }
